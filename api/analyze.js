@@ -11,7 +11,7 @@ export const config = {
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   const form = new formidable.IncomingForm();
   form.parse(req, async (err, fields, files) => {
     if (err || !files.file) return res.status(400).json({ error: 'No file uploaded' });
@@ -31,3 +31,6 @@ export default async function handler(req, res) {
     }
   });
 }
+
+// ✅ THIS IS THE MISSING LINE:
+export default handler;
