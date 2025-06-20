@@ -11,7 +11,7 @@ export const config = {
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
@@ -42,3 +42,6 @@ export default async function handler(req, res) {
     }
   });
 }
+
+// ✅ THIS IS THE CRITICAL LINE
+export default handler;
